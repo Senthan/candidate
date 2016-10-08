@@ -1,0 +1,17 @@
+{
+    "name": "jeylabs/candidate",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Senthan",
+            "email": "senthan.ceymplon@jeylabs.com"
+        }
+    ],
+  "autoload": {
+    "psr-4": {
+      "Jeylabs\\CUA\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {}
+}
