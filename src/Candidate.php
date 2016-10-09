@@ -60,11 +60,17 @@ class Candidate
     {
         return $this->lastResponse;
     }
-    protected function makeRequest($method, $uri, $query = [], $formParameters = [])
+    protected function makeRequest($method, $uri, $query = [], $formParameters = [], $file = null)
     {
         $options[GuzzleRequestOptions::FORM_PARAMS] = $formParameters;
         $options[GuzzleRequestOptions::QUERY] = $query;
         $options[GuzzleRequestOptions::HEADERS] = $this->getDefaultHeaders();
+
+        if(isset($file)) {
+            $options['file'] = $file;
+        }
+
+
         if ($this->isAsyncRequest) {
             return $this->promises[] = $this->client->requestAsync($method, $uri, $options);
         }
@@ -83,10 +89,11 @@ class Candidate
             'Authorization' => 'Bearer ' . $this->secret_key,
         ], $this->formParameters);
     }
-    public function saveCandidate($query = [], $formParameters = []) {
+    public function saveCandidate($query = [], $formParameters = [], $file = null) {
+
         $this->setHeaders(['Content-type' => 'application/json']);
         $uri = self::POST_CANDIDATE_API;
-        return $this->makeRequest('POST', $uri, $query, $formParameters);
+        return $this->makeRequest('POST', $uri, $query, $formParameters, $file);
     }
     public function __destruct()
     {
