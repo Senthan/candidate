@@ -9,7 +9,7 @@
     ],
   "autoload": {
     "psr-4": {
-      "Jeylabs\\CUA\\": "src/"
+      "Jeylabs\\Candidate\\": "src/"
     }
   },
   "minimum-stability": "dev",
