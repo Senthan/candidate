@@ -9,6 +9,7 @@ class Candidate
 {
     const VERSION = '1.0.0';
     const POST_CANDIDATE_API = 'api/candidate';
+    const POST_VACANCY_API = 'api/vacancy';
     const DEFAULT_TIMEOUT = 5;
     protected $client;
     protected $secret_key;
@@ -99,7 +100,7 @@ class Candidate
     public function saveVacancy($query = [], $formParameters = [], $file = null) {
 
         $this->setHeaders(['Content-type' => 'application/json']);
-        $uri = self::POST_CANDIDATE_API;
+        $uri = self::POST_VACANCY_API;
         return $this->makeRequest('POST', $uri, $query, $formParameters, $file);
     }
     public function __destruct()
