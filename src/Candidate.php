@@ -95,6 +95,13 @@ class Candidate
         $uri = self::POST_CANDIDATE_API;
         return $this->makeRequest('POST', $uri, $query, $formParameters, $file);
     }
+
+    public function saveVacancy($query = [], $formParameters = [], $file = null) {
+
+        $this->setHeaders(['Content-type' => 'application/json']);
+        $uri = self::POST_CANDIDATE_API;
+        return $this->makeRequest('POST', $uri, $query, $formParameters, $file);
+    }
     public function __destruct()
     {
         Promise\unwrap($this->promises);
